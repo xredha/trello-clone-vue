@@ -1,9 +1,13 @@
 <template>
-  <h1>Trello Clone</h1>
+  <h1>Sign Out</h1>
 </template>
 
 <script>
 export default {
-  
+
 }
 </script>
+
+<style>
+
+</style>
