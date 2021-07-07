@@ -29,7 +29,12 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '@/plugins/filters'
   ],
+
+  router: {
+    middleware: ['auth'],
+  },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -44,6 +49,31 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    [
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: "AIzaSyB48fI3D4bvFL0rBAVj3ODvNzmlg5Rc8u4",
+          authDomain: "trello-clone-vue-eef07.firebaseapp.com",
+          projectId: "trello-clone-vue-eef07",
+          storageBucket: "trello-clone-vue-eef07.appspot.com",
+          messagingSenderId: "1045164482103",
+          appId: "1:1045164482103:web:7b958c06de4a24bc1f29b2"
+        },
+        services: {
+          auth: {
+            persistence: 'local', // default
+            initialize: {
+              onAuthStateChangedAction: 'onAuthStateChangedAction',
+              subscribeManually: false
+            },
+            ssr: false, // default
+          },
+          firestore: true,
+          storage: true,
+        }
+      }
+    ]
   ],
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
